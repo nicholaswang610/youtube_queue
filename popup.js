@@ -12,3 +12,14 @@ chrome.storage.local.get("vidArray", function(result){
     ol.appendChild(li);
   }
 })
+
+document.getElementById("myButton").addEventListener("click", function(){
+  chrome.tabs.query({currentWindow:true, active: true}, function(tabs){
+    var activeTab = tabs[0];
+    let msg = {
+      txt: "clear!"
+    }
+    chrome.tabs.sendMessage(activeTab.id, msg)
+  })
+  window.close()
+});
