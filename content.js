@@ -14,6 +14,10 @@ function receiveMessageFromBackground(message, sender, sendResponse){
   if(message.txt == "ready"){
     console.log(message.txt);
     location.reload();
+  }else if(message.txt == "clear!"){
+    videoArray = [];
+    localStorage.clear();
+    chrome.storage.local.clear();
   }else{
     videoArray.push(message.txt);
     console.log(videoArray);
